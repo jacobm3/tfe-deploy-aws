@@ -23,6 +23,10 @@ resource "aws_instance" "tfe" {
   tags = {
     Name = "tfe"
   }
+  user_data = <<-EOF
+#!/bin/bash
+curl https://install.terraform.io/ptfe/stable | sudo bash
+EOF
 }
 
 resource "aws_instance" "splunk" {
