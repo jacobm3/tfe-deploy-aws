@@ -41,6 +41,13 @@ resource "aws_instance" "splunk" {
   tags = {
     Name = "splunk"
   }
+  user_data = <<-EOF
+#!/bin/bash
+wget   https://d7wz6hmoaavd0.cloudfront.net/products/splunk/releases/8.2.2/linux/splunk-8.2.2-87344edfcdb4-linux-2.6-amd64.deb
+dpkg -i splunk-8.2.2-87344edfcdb4-linux-2.6-amd64.deb
+EOF
+}
+  
 }
 
 
